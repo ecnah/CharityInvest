@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CharityInvest - Invest in Meaningful Projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2E7D32;
+            --accent-color: #8BC34A;
+            --dark-color: #333;
+            --light-color: #f9f9f9;
+            --gray-color: #e0e0e0;
+            --text-color: #444;
+            --white: #fff;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            padding-bottom: 80px; /* Space for chat button */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Buttons */
+        button, .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        button:hover, .cta-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .auth-buttons button {
+            margin-left: 10px;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .logo p {
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 0;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Featured Projects */
+        .featured-projects {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+
+        .featured-projects h2, .categories h2, .how-it-works h2, .about h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .project-info p {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .project-category {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .progress-container {
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: var(--gray-color);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar div {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        /* Categories */
+        .categories {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .category-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+
+        .category-card:hover h3 {
+            color: var(--white);
+        }
+
+        .category-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .category-card:hover i {
+            color: var(--white);
+        }
+
+        .category-card h3 {
+            color: var(--dark-color);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--light-color);
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        /* About */
+        .about {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+            text-align: center;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .stat h3 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        /* User Profile Section */
+        .user-profile {
+            padding: 4rem 0;
+            background-color: var(--white);
+            display: none;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--gray-color);
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            margin-right: 2rem;
+        }
+
+        .profile-info h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-stat {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .profile-stat h3 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .donations-history {
+            margin-top: 2rem;
+        }
+
+        .donation-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .donation-info h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .donation-amount {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 3rem 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section ul li a {
+            color: var(--gray-color);
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--white);
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links a {
+            color: var(--gray-color);
+            margin-left: 1.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .auth-modal {
+            max-width: 500px;
+        }
+
+        .invest-modal {
+            max-width: 600px;
+        }
+
+        .close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close:hover {
+            color: var(--primary-color);
+        }
+
+        /* Project Modal Content */
+        .project-summary {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-summary img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .project-details {
+            flex: 1;
+        }
+
+        .project-details h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-details p {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .stat-item {
+            background-color: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--gray-color);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
+
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .chat-button:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .chat-button i {
+            font-size: 24px;
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: translateY(10px);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .chat-window.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .chat-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header h3 {
+            margin: 0;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            margin-bottom: 10px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bot-message {
+            background-color: #f1f1f1;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .user-message {
+            background-color: var(--primary-color);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid var(--gray-color);
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--gray-color);
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .chat-input button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chat-input button:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Quick Replies */
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .quick-reply {
+            background-color: #e8f5e9;
+            border: 1px solid #c8e6c9;
+            border-radius: 16px;
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quick-reply:hover {
+            background-color: #c8e6c9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .auth-buttons {
+                margin-top: 1rem;
+            }
+
+            .hero {
+                padding: 4rem 0;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .project-summary {
+                flex-direction: column;
+            }
+
+            .project-summary img {
+                width: 100%;
+            }
+
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
+
+            .chat-window {
+                width: 320px;
+                right: -20px;
+            }
+
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-avatar {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .donation-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                margin-top: 1rem;
+            }
+
+            .footer-links a {
+                margin: 0 0.75rem;
+            }
+            
+            .chat-window {
+                width: 300px;
+                right: -40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>CharityInvest</h1>
+                <p>Connecting donors with meaningful projects</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#featured">Featured Projects</a></li>
+                    <li><a href="#categories">Categories</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li class="auth-buttons">
+                        <button id="loginBtn">Login</button>
+                        <button id="registerBtn">Register</button>
+                        <button id="logoutBtn" style="display: none;">Logout</button>
+                        <button id="profileBtn" style="display: none;">My Profile</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Invest in Change That Matters</h2>
+            <p>Browse vetted charity projects and directly fund the initiatives you care about most.</p>
+            <button class="cta-button" id="exploreBtn">Explore Projects</button>
+        </div>
+    </section>
+
+    <section id="featured" class="featured-projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid" id="projectsContainer">
+                <!-- Projects will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2>Browse by Category</h2>
+            <div class="category-grid">
+                <div class="category-card" data-category="education">
+                    <i class="fas fa-book"></i>
+                    <h3>Education</h3>
+                </div>
+                <div class="category-card" data-category="health">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Health</h3>
+                </div>
+                <div class="category-card" data-category="environment">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Environment</h3>
+                </div>
+                <div class="category-card" data-category="poverty">
+                    <i class="fas fa-hands-helping"></i>
+                    <h3>Poverty Alleviation</h3>
+                </div>
+                <div class="category-card" data-category="animals">
+                    <i class="fas fa-paw"></i>
+                    <h3>Animal Welfare</h3>
+                </div>
+                <div class="category-card" data-category="human-rights">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Human Rights</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Browse Projects</h3>
+                    <p>Explore vetted charity projects from around the world.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Select Your Cause</h3>
+                    <p>Choose a project that aligns with your values and goals.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Make an Investment</h3>
+                    <p>Contribute any amount directly to the project.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Track Impact</h3>
+                    <p>Receive updates on how your investment is making a difference.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About CharityInvest</h2>
+            <p>CharityInvest is a platform that connects donors with carefully vetted charity projects around the world. We believe in transparency, impact, and the power of direct giving. Our platform ensures that 100% of your investment goes directly to the project you choose.</p>
+            <div class="stats">
+                <div class="stat">
+                    <h3>250+</h3>
+                    <p>Projects Funded</p>
+                </div>
+                <div class="stat">
+                    <h3>$5M+</h3>
+                    <p>Invested</p>
+                </div>
+                <div class="stat">
+                    <h3>98%</h3>
+                    <p>Donor Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Profile Section -->
+    <section id="user-profile" class="user-profile">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-info">
+                    <h2 id="profile-name">User Name</h2>
+                    <p id="profile-email">user@example.com</p>
+                    <p>Member since <span id="join-date">January 2023</span></p>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+                <div class="profile-stat">
+                    <h3 id="total-donations">0</h3>
+                    <p>Total Donations</p>
+                </div>
+                <div class="profile-stat">
+                    <h3 id="projects-supported">0</h3>
+                    <p>Projects Supported</p>
+                </div>
+                <div class="profile-stat">
+                    <h3 id="total-amount">$0</h3>
+                    <p>Total Amount Donated</p>
+                </div>
+            </div>
+
+            <div class="donations-history">
+                <h3>Recent Donations</h3>
+                <div id="donations-container">
+                    <!-- Donations will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CharityInvest</h3>
+                    <p>Making charitable investing simple, transparent, and impactful.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#featured">Projects</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>info@charityinvest.org</p>
+                    <p>+254 723 234 456</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CharityInvest. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalProjectContent">
+                <!-- Project details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content auth-modal">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="cta-button">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" id="switchToRegister">Register here</a></p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content auth-modal">
+            <span class="close">&times;</span>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Confirm Password</label>
+                    <input type="password" id="registerConfirmPassword" required>
+                </div>
+                <button type="submit" class="cta-button">Register</button>
+            </form>
+            <p>Already have an account? <a href="#" id="switchToLogin">Login here</a></p>
+        </div>
+    </div>
+
+    <!-- Investment Modal -->
+    <div id="investModal" class="modal">
+        <div class="modal-content invest-modal">
+            <span class="close">&times;</span>
+            <h2 id="investProjectTitle">Invest in <span id="projectName"></span></h2>
+            <div class="project-summary">
+                <img id="investProjectImage" src="" alt="Project image">
+                <div>
+                    <p id="investProjectDescription"></p>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="investProgressBar"></div>
+                        <div class="progress-text">
+                            <span id="amountRaised">$0</span> raised of <span id="fundingGoal">$10,000</span> goal
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form id="investForm">
+                <div class="form-group">
+                    <label for="investmentAmount">Investment Amount ($)</label>
+                    <input type="number" id="investmentAmount" min="10" required>
+                </div>
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method</label>
+                    <select id="paymentMethod" required>
+                        <option value="">Select payment method</option>
+                        <option value="credit">Credit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="bank">Bank Transfer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="investorMessage">Optional Message</label>
+                    <textarea id="investorMessage" rows="3"></textarea>
+                </div>
+                <button type="submit" class="cta-button">Complete Investment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chatbot Container -->
+    <div class="chatbot-container">
+        <div class="chat-button" id="chatButton">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h3>CharityInvest Assistant</h3>
+                <button class="chat-close" id="chatClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot-message">
+                    Hello! I'm your CharityInvest assistant. How can I help you today?
+                    <div class="quick-replies">
+                        <div class="quick-reply" data-reply="How do I invest in a project?">How do I invest?</div>
+                        <div class="quick-reply" data-reply="What payment methods do you accept?">Payment methods</div>
+                        <div class="quick-reply" data-reply="How can I track my investments?">Track investments</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Type your question here...">
+                <button id="sendMessage"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample project data
+        const projects = [
+            {
+                id: 1,
+                title: "Clean Water for Rural Villages",
+                description: "Help us provide clean drinking water to 5 rural villages in sub-Saharan Africa by building wells and water purification systems.",
+                category: "health",
+                image: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                fundingGoal: 25000,
+                amountRaised: 18500,
+                donors: 142,
+                daysLeft: 23,
+                organization: "Water for Life",
+                location: "Sub-Saharan Africa",
+                impact: "This project will provide clean water to over 2,000 people, reducing waterborne diseases and improving quality of life."
+            },
+            {
+                id: 2,
+                title: "Education for Refugee Children",
+                description: "Support education for refugee children by providing school supplies, uniforms, and teacher salaries in refugee camps.",
+                category: "education",
+                image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                fundingGoal: 15000,
+                amountRaised: 8750,
+                donors: 89,
+                daysLeft: 45,
+                organization: "Hope for Refugees",
+                location: "Middle East",
+                impact: "500 refugee children will receive education and school materials for one year."
+            },
+            {
+                id: 3,
+                title: "Rainforest Conservation Project",
+                description: "Protect 100 acres of endangered rainforest and its biodiversity through conservation efforts and community education.",
+                category: "environment",
+                image: "https://images.unsplash.com/photo-1465189684280-6a8fa9b19a7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                fundingGoal: 35000,
+                amountRaised: 21000,
+                donors: 156,
+                daysLeft: 12,
+                organization: "Green Earth Initiative",
+                location: "Amazon Rainforest",
+                impact: "Preservation of critical habitat for endangered species and carbon sequestration to combat climate change."
+            },
+            {
+                id: 4,
+                title: "Animal Shelter Renovation",
+                description: "Renovate our aging animal shelter to provide better care for abandoned pets and increase adoption rates.",
+                category: "animals",
+                image: "https://images.unsplash.com/photo-1455103493930-a116f655b6c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                fundingGoal: 20000,
+                amountRaised: 12500,
+                donors: 203,
+                daysLeft: 30,
+                organization: "Paws & Claws Rescue",
+                location: "Chicago, USA",
+                impact: "Improved facilities will allow us to care for 50% more animals and increase adoption rates by 30%."
+            },
+            {
+                id: 5,
+                title: "Microfinance for Women Entrepreneurs",
+                description: "Provide microloans and business training to 100 women in developing countries to start their own businesses.",
+                category: "poverty",
+                image: "https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                fundingGoal: 30000,
+                amountRaised: 18750,
+                donors: 112,
+                daysLeft: 60,
+                organization: "Women's Economic Empowerment",
+                location: "Various Countries",
+                impact: "Each $300 loan helps a woman start a business that can support her family and create jobs in her community."
+            },
+            {
+                id: 6,
+                title: "Disaster Relief Fund",
+                description: "Emergency fund to provide immediate assistance to communities affected by natural disasters worldwide.",
+                category: "human-rights",
+                image: "https://images.unsplash.com/photo-1501426026826-31c667bdf23d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                fundingGoal: 50000,
+                amountRaised: 32500,
+                donors: 245,
+                daysLeft: 90,
+                organization: "Global Aid Network",
+                location: "Worldwide",
+                impact: "Provides food, shelter, and medical care to disaster victims within 72 hours of an emergency."
+            }
+        ];
+
+        // User data and donations
+        let currentUser = null;
+        let userDonations = JSON.parse(localStorage.getItem('userDonations')) || [];
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        // DOM Elements
+        const projectsContainer = document.getElementById('projectsContainer');
+        const projectModal = document.getElementById('projectModal');
+        const modalProjectContent = document.getElementById('modalProjectContent');
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const investModal = document.getElementById('investModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const profileBtn = document.getElementById('profileBtn');
+        const exploreBtn = document.getElementById('exploreBtn');
+        const switchToRegister = document.getElementById('switchToRegister');
+        const switchToLogin = document.getElementById('switchToLogin');
+        const closeButtons = document.querySelectorAll('.close');
+        const categoryCards = document.querySelectorAll('.category-card');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const investForm = document.getElementById('investForm');
+        const userProfileSection = document.getElementById('user-profile');
+        
+        // Profile elements
+        const profileName = document.getElementById('profile-name');
+        const profileEmail = document.getElementById('profile-email');
+        const joinDate = document.getElementById('join-date');
+        const totalDonations = document.getElementById('total-donations');
+        const projectsSupported = document.getElementById('projects-supported');
+        const totalAmount = document.getElementById('total-amount');
+        const donationsContainer = document.getElementById('donations-container');
+        
+        // Chatbot elements
+        const chatButton = document.getElementById('chatButton');
+        const chatWindow = document.getElementById('chatWindow');
+        const chatClose = document.getElementById('chatClose');
+        const chatMessages = document.getElementById('chatMessages');
+        const userInput = document.getElementById('userInput');
+        const sendMessage = document.getElementById('sendMessage');
+        const quickReplies = document.querySelectorAll('.quick-reply');
+
+        // Current project for investment
+        let currentProject = null;
+
+        // Check if user is logged in on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                currentUser = JSON.parse(savedUser);
+                updateAuthUI();
+            }
+            
+            displayProjects(projects);
+            initChatbot();
+        });
+
+        // Display projects in grid
+        function displayProjects(projectsToDisplay) {
+            projectsContainer.innerHTML = '';
+            
+            projectsToDisplay.forEach(project => {
+                const progress = (project.amountRaised / project.fundingGoal) * 100;
+                
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+                projectCard.innerHTML = `
+                    <div class="project-image">
+                        <img src="${project.image}" alt="${project.title}">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">${project.category}</span>
+                        <h3>${project.title}</h3>
+                        <p>${project.description}</p>
+                        <div class="progress-container">
+                            <div class="progress-bar"><div style="width: ${progress}%"></div></div>
+                            <div class="progress-text">
+                                <span>$${project.amountRaised.toLocaleString()}</span> raised of $${project.fundingGoal.toLocaleString()} goal
+                            </div>
+                        </div>
+                        <div class="project-meta">
+                            <span><i class="fas fa-users"></i> ${project.donors} donors</span>
+                            <span><i class="far fa-clock"></i> ${project.daysLeft} days left</span>
+                        </div>
+                        <button class="cta-button invest-btn" data-id="${project.id}">Invest Now</button>
+                    </div>
+                `;
+                
+                projectsContainer.appendChild(projectCard);
+            });
+            
+            // Add event listeners to invest buttons
+            document.querySelectorAll('.invest-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const projectId = parseInt(e.target.getAttribute('data-id'));
+                    currentProject = projects.find(p => p.id === projectId);
+                    if (currentUser) {
+                        openInvestModal();
+                    } else {
+                        alert('Please login or register to invest in a project');
+                        loginModal.style.display = 'block';
+                    }
+                });
+            });
+        }
+
+        // Open project modal
+        function openProjectModal(project) {
+            const progress = (project.amountRaised / project.fundingGoal) * 100;
+            
+            modalProjectContent.innerHTML = `
+                <div class="project-summary">
+                    <img src="${project.image}" alt="${project.title}">
+                    <div class="project-details">
+                        <h3>${project.title}</h3>
+                        <p><strong>Organization:</strong> ${project.organization}</p>
+                        <p><strong>Location:</strong> ${project.location}</p>
+                        <div class="progress-container">
+                            <div class="progress-bar"><div style="width: ${progress}%"></div></div>
+                            <div class="progress-text">
+                                <span>$${project.amountRaised.toLocaleString()}</span> raised of $${project.fundingGoal.toLocaleString()} goal
+                            </div>
+                        </div>
+                        <div class="project-stats">
+                            <div class="stat-item">
+                                <h4>${project.donors}</h4>
+                                <p>Donors</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>${project.daysLeft}</h4>
+                                <p>Days Left</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>${Math.round(progress)}%</h4>
+                                <p>Funded</p>
+                            </div>
+                        </div>
+                        <button class="cta-button invest-btn" data-id="${project.id}">Invest Now</button>
+                    </div>
+                </div>
+                <div class="project-impact">
+                    <h4>About This Project</h4>
+                    <p>${project.description}</p>
+                    
+                    <h4>Impact</h4>
+                    <p>${project.impact}</p>
+                </div>
+            `;
+            
+            projectModal.style.display = 'block';
+            
+            // Add event listener to invest button in modal
+            modalProjectContent.querySelector('.invest-btn').addEventListener('click', () => {
+                projectModal.style.display = 'none';
+                if (currentUser) {
+                    openInvestModal();
+                } else {
+                    alert('Please login or register to invest in a project');
+                    loginModal.style.display = 'block';
+                }
+            });
+        }
+
+        // Open invest modal
+        function openInvestModal() {
+            if (!currentProject) return;
+            
+            const progress = (currentProject.amountRaised / currentProject.fundingGoal) * 100;
+            
+            document.getElementById('projectName').textContent = currentProject.title;
+            document.getElementById('investProjectImage').src = currentProject.image;
+            document.getElementById('investProjectDescription').textContent = currentProject.description;
+            document.getElementById('amountRaised').textContent = `$${currentProject.amountRaised.toLocaleString()}`;
+            document.getElementById('fundingGoal').textContent = `$${currentProject.fundingGoal.toLocaleString()}`;
+            document.getElementById('investProgressBar').innerHTML = `<div style="width: ${progress}%"></div>`;
+            
+            investModal.style.display = 'block';
+        }
+
+        // Close modal
+        function closeModal(modal) {
+            modal.style.display = 'none';
+        }
+
+        // Update authentication UI
+        function updateAuthUI() {
+            if (currentUser) {
+                loginBtn.style.display = 'none';
+                registerBtn.style.display = 'none';
+                logoutBtn.style.display = 'inline-block';
+                profileBtn.style.display = 'inline-block';
+            } else {
+                loginBtn.style.display = 'inline-block';
+                registerBtn.style.display = 'inline-block';
+                logoutBtn.style.display = 'none';
+                profileBtn.style.display = 'none';
+                userProfileSection.style.display = 'none';
+            }
+        }
+
+        // Show user profile
+        function showUserProfile() {
+            if (!currentUser) return;
+            
+            // Update profile information
+            profileName.textContent = currentUser.name;
+            profileEmail.textContent = currentUser.email;
+            joinDate.textContent = currentUser.joinDate;
+            
+            // Filter user's donations
+            const userDonationHistory = userDonations.filter(d => d.userId === currentUser.id);
+            
+            // Update stats
+            totalDonations.textContent = userDonationHistory.length;
+            
+            const uniqueProjects = new Set(userDonationHistory.map(d => d.projectId));
+            projectsSupported.textContent = uniqueProjects.size;
+            
+            const donationTotal = userDonationHistory.reduce((sum, donation) => sum + donation.amount, 0);
+            totalAmount.textContent = `$${donationTotal.toLocaleString()}`;
+            
+            // Display donations
+            donationsContainer.innerHTML = '';
+            
+            if (userDonationHistory.length === 0) {
+                donationsContainer.innerHTML = '<p>No donations yet. Invest in a project to see it here!</p>';
+            } else {
+                userDonationHistory.forEach(donation => {
+                    const project = projects.find(p => p.id === donation.projectId);
+                    if (project) {
+                        const donationElement = document.createElement('div');
+                        donationElement.className = 'donation-card';
+                        donationElement.innerHTML = `
+                            <div class="donation-info">
+                                <h4>${project.title}</h4>
+                                <p>${new Date(donation.date).toLocaleDateString()}</p>
+                            </div>
+                            <div class="donation-amount">$${donation.amount.toLocaleString()}</div>
+                        `;
+                        donationsContainer.appendChild(donationElement);
+                    }
+                });
+            }
+            
+            // Show profile section and hide others
+            document.querySelectorAll('section:not(#user-profile)').forEach(section => {
+                section.style.display = 'none';
+            });
+            userProfileSection.style.display = 'block';
+            
+            // Scroll to profile
+            userProfileSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize chatbot functionality
+        function initChatbot() {
+            // Toggle chat window
+            chatButton.addEventListener('click', () => {
+                chatWindow.classList.toggle('active');
+            });
+            
+            // Close chat window
+            chatClose.addEventListener('click', () => {
+                chatWindow.classList.remove('active');
+            });
+            
+            // Send message on button click
+            sendMessage.addEventListener('click', () => {
+                sendUserMessage();
+            });
+            
+            // Send message on Enter key
+            userInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendUserMessage();
+                }
+            });
+            
+            // Quick reply functionality
+            quickReplies.forEach(reply => {
+                reply.addEventListener('click', () => {
+                    const replyText = reply.getAttribute('data-reply');
+                    userInput.value = replyText;
+                    sendUserMessage();
+                });
+            });
+        }
+        
+        // Send user message and get bot response
+        function sendUserMessage() {
+            const message = userInput.value.trim();
+            if (message === '') return;
+            
+            // Add user message to chat
+            addMessage(message, 'user');
+            userInput.value = '';
+            
+            // Get bot response after a short delay
+            setTimeout(() => {
+                const response = getBotResponse(message);
+                addMessage(response, 'bot');
+            }, 600);
+        }
+        
+        // Add message to chat
+        function addMessage(text, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            messageElement.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+            messageElement.textContent = text;
+            
+            // Add quick replies for bot messages
+            if (sender === 'bot' && text.includes('How can I help')) {
+                const quickRepliesDiv = document.createElement('div');
+                quickRepliesDiv.classList.add('quick-replies');
+                
+                const replies = [
+                    'How do I invest in a project?',
+                    'What payment methods do you accept?',
+                    'How can I track my investments?'
+                ];
+                
+                replies.forEach(reply => {
+                    const replyElement = document.createElement('div');
+                    replyElement.classList.add('quick-reply');
+                    replyElement.textContent = reply;
+                    replyElement.setAttribute('data-reply', reply);
+                    replyElement.addEventListener('click', () => {
+                        userInput.value = reply;
+                        sendUserMessage();
+                    });
+                    quickRepliesDiv.appendChild(replyElement);
+                });
+                
+                messageElement.appendChild(quickRepliesDiv);
+            }
+            
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Generate bot response based on user message
+        function getBotResponse(message) {
+            message = message.toLowerCase();
+            
+      if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
+                return "Hello! How can I assist you with your charitable investments today?";
+            } else if (message.includes('how are you doing')){
+                return "i am doing well how can i be of help today";
+            } else if (message.includes('what is your name')){
+                return "my name is tina";
+            } else if (message.includes('are you a robot')){
+                return " Yes i am a bot what can i help you with today";
+            } else if (message.includes('invest') || message.includes('donate') || message.includes('contribute')) {
+                return "To invest in a project, simply browse our projects, select one you're passionate about, and click the 'Invest Now' button. You can choose your investment amount and payment method.";
+            } else if (message.includes('payment') || message.includes('credit card') || message.includes('paypal')) {
+                return "We accept credit cards, PayPal, and bank transfers. All payments are securely processed through our encrypted payment system.";
+            } else if (message.includes('track') || message.includes('progress') || message.includes('update')) {
+                return "Once you've invested in a project, you'll receive regular email updates on its progress. You can also log into your account to see all your investments and their current status.";
+            } else if (message.includes('fee') || message.includes('charge') || message.includes('cost')) {
+                return "We're proud to say that 100% of your investment goes directly to the project. Our operational costs are covered by separate institutional grants and partnerships.";
+            } else if (message.includes('tax') || message.includes('deductible') || message.includes('receipt')) {
+                return "All investments through our platform are tax-deductible in most countries. You'll receive a receipt for your records immediately after your investment.";
+            } else if (message.includes('contact') || message.includes('support') || message.includes('help')) {
+                return "You can reach our support team at support@charityinvest.org or call us at +1 (555) 123-4567. We're available Monday to Friday, 9 AM to 6 PM EST.";
+            } else if (message.includes('thank') || message.includes('thanks')) {
+                return "You're welcome! Is there anything else I can help you with?";
+            } else {
+                return "I'm not sure I understand. Could you please rephrase your question? I can help with information about investing, payment methods, tracking your investments, and more.";
+            }
+        }
+
+        // Event Listeners
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'block';
+        });
+
+        registerBtn.addEventListener('click', () => {
+            registerModal.style.display = 'block';
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            updateAuthUI();
+            alert('You have been logged out successfully.');
+            
+            // Show all sections again
+            document.querySelectorAll('section').forEach(section => {
+                section.style.display = 'block';
+            });
+            userProfileSection.style.display = 'none';
+        });
+
+        profileBtn.addEventListener('click', () => {
+            showUserProfile();
+        });
+
+        exploreBtn.addEventListener('click', () => {
+            document.getElementById('featured').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        switchToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'none';
+            registerModal.style.display = 'block';
+        });
+
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            registerModal.style.display = 'none';
+            loginModal.style.display = 'block';
+        });
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal');
+                closeModal(modal);
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                closeModal(e.target);
+            }
+        });
+
+        // Filter projects by category
+        categoryCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const category = card.getAttribute('data-category');
+                const filteredProjects = projects.filter(project => project.category === category);
+                displayProjects(filteredProjects);
+                document.getElementById('featured').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Form submissions
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Simple validation
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Check if user exists
+            const user = users.find(u => u.email === email && u.password === password);
+            if (user) {
+                currentUser = user;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+                alert('Login successful!');
+                closeModal(loginModal);
+                loginForm.reset();
+                updateAuthUI();
+            } else {
+                alert('Invalid email or password');
+            }
+        });
+
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            
+            // Simple validation
+            if (!name || !email || !password || !confirmPassword) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            // Check if user already exists
+            if (users.some(u => u.email === email)) {
+                alert('User with this email already exists');
+                return;
+            }
+            
+            // Create new user
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                password,
+                joinDate: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+            };
+            
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            currentUser = newUser;
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            
+            alert('Registration successful! You are now logged in.');
+            closeModal(registerModal);
+            registerForm.reset();
+            updateAuthUI();
+        });
+
+        investForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const amount = parseFloat(document.getElementById('investmentAmount').value);
+            const paymentMethod = document.getElementById('paymentMethod').value;
+            
+            if (!amount || amount < 10) {
+                alert('Minimum investment is $10');
+                return;
+            }
+            
+            if (!paymentMethod) {
+                alert('Please select a payment method');
+                return;
+            }
+            
+            // Create donation record
+            const donation = {
+                id: Date.now(),
+                userId: currentUser.id,
+                projectId: currentProject.id,
+                projectTitle: currentProject.title,
+                amount: amount,
+                date: new Date().toISOString(),
+                paymentMethod: paymentMethod
+            };
+            
+            userDonations.push(donation);
+            localStorage.setItem('userDonations', JSON.stringify(userDonations));
+            
+            // Update the project's raised amount (in a real app, this would be a server call)
+            currentProject.amountRaised += amount;
+            currentProject.donors += 1;
+            
+            alert(`Thank you for your investment of $${amount.toFixed(2)} in "${currentProject.title}"!`);
+            closeModal(investModal);
+            investForm.reset();
+            
+            // Update the project display
+            displayProjects(projects);
+        });
+
+        // Allow clicking on project cards to open modal
+        projectsContainer.addEventListener('click', (e) => {
+            const projectCard = e.target.closest('.project-card');
+            if (projectCard && !e.target.classList.contains('invest-btn')) {
+                const projectTitle = projectCard.querySelector('h3').textContent;
+                const project = projects.find(p => p.title === projectTitle);
+                if (project) {
+                    currentProject = project;
+                    openProjectModal(project);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
