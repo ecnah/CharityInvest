@@ -1,0 +1,8 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    x-defang-static-files:
+      folder: /usr/share/caddy/

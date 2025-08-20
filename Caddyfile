@@ -1,0 +1,26 @@
+# Caddyfile for CharityInvest
+:80 {
+    # Serve files from the web root
+    root * /usr/share/caddy
+    
+    # Enable file server
+    file_server
+    
+    # Enable gzip compression
+    encode gzip
+    
+    # Set security headers
+    header {
+        # Enable HSTS
+        Strict-Transport-Security max-age=31536000;
+        # Prevent MIME type sniffing
+        X-Content-Type-Options nosniff
+        # Enable XSS protection
+        X-XSS-Protection "1; mode=block"
+        # Prevent clickjacking
+        X-Frame-Options DENY
+    }
+    
+    # Handle SPA routing - serve index.html for all routes
+    try_files {path} /index.html
+}
